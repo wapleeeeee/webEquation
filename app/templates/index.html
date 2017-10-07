@@ -1,7 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Hi, {{user.nickname}}</h1>
-{% for post in posts %}
-<div><p>{{post.author.nickname}} says: <b>{{post.body}}</b></p></div>
-{% endfor %}
+
+    <div class="container">
+     <div class="jumbotron">
+      	
+        <h2>欢迎来到四则运算系统！</h2><br>
+        <p>首次登陆请输入用户名(1-15位)及答题数(1-20)开始答题。</p>
+        <form class="form-horizontal" action="" method="post" name="login">
+   			 {{form.hidden_tag()}}
+        <p>请输入您的用户名：</p>
+        <input name="username" type="text" class="form-control" placeholder="Username ">
+        {% for error in form.username.errors %}
+        <span class="help-inline">[{{ error }}]</span>
+        {% endfor %}<br>
+
+ 		<p>请输入您本次答题数：</p>
+        <input name="numbers" type="text" class="form-control" placeholder="Number ">
+        {% for error in form.numbers.errors %}
+        <span class="help-inline">[{{ error }}]</span>
+        {% endfor %}<br>
+        <br>
+	
+	<div class="control-group">
+            <div class="controls">
+		<input class="btn btn-primary" type="submit" value="开始答题">
+			</div>
+	</div>
+	</form>
+     </div>
+
+    </div><!-- /.container -->
+
 {% endblock %}

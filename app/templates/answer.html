@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container">
+     <div class="well">
+      	<div class="page-header">
+        <h2>开始答题： </h2>
+        </div>
+        <form class="form-horizontal" action="" method="post" name="ans">
+          {{form.hidden_tag()}}
+          {% for post in posts %}
+           <br><h5>{{post.num}}. {{post.equ}} </h5>
+            <input name="answer-{{post.num}}" type="text" class="form-control" placeholder="请输入答案 ">
+           {% for error in form.answer.errors %}
+            <span class="help-inline">[{{ error }}]</span>
+            {% endfor %}
+            {% endfor %}
+            <br>
+		    <p class="text-center"><input class="btn btn-primary" type="submit" value="提交答案" ></p>
+    </form>
+     </div>
+    </div><!-- /.container -->
+
+{% endblock %}
