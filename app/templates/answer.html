@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-
+  <body onload="timedCount()">
+      
     <div class="container">
      <div class="well">
       	<div class="page-header">
-        <h2>开始答题： </h2>
+          <h2 style="display: inline;">开始答题： </h2>
+          <div align="right"><strong>用时:</strong> <span class="label label-default" name = "txt" id="txt"></span><strong> s</strong>
         </div>
+      </div>
         <form class="form-horizontal" action="" method="post" name="ans">
           {{form.hidden_tag()}}
+          {{ form.csrf_token }}
           {% for post in posts %}
            <br><h5>{{post.num}}. {{post.equ}} </h5>
             <input name="answer-{{post.num}}" type="text" class="form-control" placeholder="请输入答案 ">
@@ -20,5 +24,5 @@
     </form>
      </div>
     </div><!-- /.container -->
-
+  </body>
 {% endblock %}

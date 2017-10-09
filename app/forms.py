@@ -11,4 +11,8 @@ class MyLoginForm(Form):
 	numbers = IntegerField(1, validators=[NumberRange(min=1,max=20,message="请输入1-20的整数")])
 
 class AnswerForm(Form):
-	answer = FieldList(StringField(validators=[Length(min=1,max=10,message="输入长度错误")]), label = '答案列表', min_entries=1)
+	def __init__(self, *args, **kwargs):
+		kwargs['csrf_enabled'] = False
+		super(AnswerForm, self).__init__(*args, **kwargs)
+
+	answer = FieldList(StringField(validators=[DataRequired(),Length(1,10)]), label = '答案列表', min_entries=1)

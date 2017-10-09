@@ -3,14 +3,16 @@
 
 {% block content %}
 
+<body>
     <div class="container">
      <div class="jumbotron">
      	<div class="page-header">
         <h2>您好 {{user}}！</h2>
-        <p>本次测试共 {{num}} 题  您共答对 {{correct}} 题！</p>
+        <p>本次测试共 {{num}} 题  您共答对 {{correct}} 题！耗时s</p>
         <a href="{{ url_for('index') }}"><input type="button" class="btn btn-primary" name="button" value="返回首页"></a>
      </div>
 	</div>
-
+</div>
+</body>
 
 {% endblock %}

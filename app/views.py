@@ -32,6 +32,7 @@ def login():
 def answer(user,num):
 	form = AnswerForm()
 	if form.validate_on_submit():
+		flash("success")
 		counter = 0
 		for index,entry in enumerate(form.answer.entries):
 			a = "answer"+str(index+1)
@@ -39,6 +40,7 @@ def answer(user,num):
 				counter += 1
 		return redirect(url_for('finish',correct=counter,user = user,num=num))
 
+	flash("???")
 	posts = []
 	for i in range(1,1+int(num)):
 		ansstring = "answer"+str(i)

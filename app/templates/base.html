@@ -38,6 +38,54 @@
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!--向txt中输入时间 -->
+    <script type="text/javascript">
+    function startTime()
+    {
+      var today=new Date()
+      var h=today.getHours()
+      var m=today.getMinutes()
+      var s=today.getSeconds()
+      // add a zero in front of numbers<10
+      m=checkTime(m)
+      s=checkTime(s)
+      document.getElementById('txt').innerHTML=h+":"+m+":"+s
+      t=setTimeout('startTime()',500)
+    }
+
+    function checkTime(i)
+    {
+    if (i<10) 
+      {i="0" + i}
+      return i
+    }
+    </script>
+
+    <!--计时器 -->
+    <script type="text/javascript">
+      var c=0
+      var t
+      function timedCount()
+       {
+       document.getElementById('txt').innerHTML=c
+       c=c+1
+       t=setTimeout("timedCount()",1000)
+       }
+    </script>
+
+    <!--cookie-->
+    <script type="text/javascript">
+      function setCookie(){
+        document.cookie = document.getElementById('txt').innerHTML
+      }
+    </script>
+    <script type="text/javascript">
+      function gettime(){
+        document.getElementById('time').innerHTML = document.cookie
+      }
+    </script>
+    
+
   </head>
       <nav class="navbar navbar-inverse">
         <div class="container">
@@ -67,7 +115,7 @@
           </div><!--/.nav-collapse -->
         </div>
       </nav>
-
+    
     <div class="container">
       <div class = "starter-template">
     {% with messages = get_flashed_messages() %}
@@ -93,5 +141,4 @@
     <script src="../../assets/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
-</html>
+  </html>
