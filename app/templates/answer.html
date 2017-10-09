@@ -13,7 +13,7 @@
           {{form.hidden_tag()}}
           {{ form.csrf_token }}
           {% for post in posts %}
-           <br><h5>{{post.num}}. {{post.equ}} </h5>
+           <br><h5>{{post.num}}. {{post.equ}}</h5>
             <input name="answer-{{post.num}}" type="text" class="form-control" placeholder="请输入答案 ">
            {% for error in form.answer.errors %}
             <span class="help-inline">[{{ error }}]</span>

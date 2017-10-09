@@ -3,7 +3,7 @@ from app import app
 from app import homework2
 from .forms import LoginForm,MyLoginForm,AnswerForm
 import flask
-
+from time import time as ti
 
 @app.route('/', methods = ['GET', 'POST'])
 @app.route('/index', methods = ['GET', 'POST'])
@@ -32,32 +32,33 @@ def login():
 def answer(user,num):
 	form = AnswerForm()
 	if form.validate_on_submit():
-		flash("success")
+		time = int(ti())-session["starttime"]
 		counter = 0
 		for index,entry in enumerate(form.answer.entries):
-			a = "answer"+str(index+1)
-			if session[a] == entry.data.strip():
+			a = "answer_"+str(index+1)
+			if session[a] == entry.data:
 				counter += 1
-		return redirect(url_for('finish',correct=counter,user = user,num=num))
+		return redirect(url_for('finish',correct=counter,user = user,num=num,time=time))
 
-	flash("???")
 	posts = []
 	for i in range(1,1+int(num)):
-		ansstring = "answer"+str(i)
+		ansstring = "answer_"+str(i)
 		equclass = homework2.Equation()
 		equclass.start()
 		_Dict = {'num':i, 'equ':equclass.equ, 'ans':equclass.answer}
 		posts.append(_Dict)
 		session[ansstring] = str(equclass.answer)
 
+	session["starttime"] = int(ti())
 	return render_template("answer.html",
 		title = 'Answer',
 		form = form,
 		posts = posts)
 
-@app.route('/finish/<user>/<num>/<correct>', methods = ['GET', 'POST'])
-def finish(user,num,correct):
+@app.route('/finish/<user>/<num>/<correct>/<time>', methods = ['GET', 'POST'])
+def finish(user,num,correct,time):
 	return render_template('finish.html',
 		user = user,
 		num = num,
-		correct = correct)
+		correct = correct,
+		time = time)
