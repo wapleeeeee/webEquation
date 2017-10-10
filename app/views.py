@@ -1,6 +1,6 @@
 from flask import render_template,flash,redirect,url_for,session
 from app import app
-from app import homework2
+from app import homework2,db,models
 from .forms import LoginForm,MyLoginForm,AnswerForm
 import flask
 from time import time as ti
@@ -38,6 +38,19 @@ def answer(user,num):
 			a = "answer_"+str(index+1)
 			if session[a] == entry.data:
 				counter += 1
+		#整理数据库
+		#如果存在记录
+		if models.User.query.filter_by(nickname = user).all():
+			old_db = models.User.query.filter_by(nickname = user).first()
+			old_db.numberOfQuestions = num + old_db.numberOfQuestions
+			old_db.correct = counter + old_db.correct
+			old_db.time = time + old_db.time
+			db.session.add(old_db)
+		else:
+			u = models.User(nickname = user,numberOfQuestions = num,correct = counter,time = time)
+			db.session.add(u)
+		db.session.commit()
+
 		return redirect(url_for('finish',correct=counter,user = user,num=num,time=time))
 
 	posts = []
