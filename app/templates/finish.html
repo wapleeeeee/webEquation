@@ -7,9 +7,9 @@
     <div class="container">
      <div class="jumbotron">
      	<div class="page-header">
-        <h2>{{_('您好')}} {{user}}！</h2>
-        <p>{{_('本次测试共 %(num) 题  您共答对 %(correct) 题！耗时 %(time) s',num=num,correct=correct,time=time)}}</p>
-        <a href="{{ url_for('index') }}"><input type="button" class="btn btn-primary" name="button" value="{{_('返回首页')}}"></a>
+        <h2>{{_('您好')}} {{ user }}!</h2>
+         <p> {{ _('本次测试') }} {{ num }} {{ _('题') }}  {{ _('您共答对') }} {{ correct }} {{ _('题！耗时') }} {{ time }}s</p>
+        <a href="{{ url_for('index') }}"><input type="button" class="btn btn-primary" name="button" value="{{ _('返回首页') }}"></a>
      </div>
 	</div>
 </div>

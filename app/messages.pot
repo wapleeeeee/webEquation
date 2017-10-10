@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-10-10 20:37+0800\n"
+"POT-Creation-Date: 2017-10-10 23:49+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-#: views.py:33
+#: views.py:37
 msgid ""
 "è¯·è¾å"
 "¥ç¨æ·åä¸è³å°å®æä¸æ¬¡ç­é¢"
@@ -47,35 +47,35 @@ msgstr ""
 msgid "提交答案"
 msgstr ""
 
-#: templates/base.html:109
+#: templates/base.html:108
 msgid "四则运算器"
 msgstr ""
 
-#: templates/base.html:113
+#: templates/base.html:112
 msgid "主 页 "
 msgstr ""
 
-#: templates/base.html:114
+#: templates/base.html:113
 msgid "历史成绩"
 msgstr ""
 
-#: templates/base.html:115
+#: templates/base.html:114
 msgid "github地址 "
 msgstr ""
 
-#: templates/base.html:117
+#: templates/base.html:116
 msgid "语言切换 "
 msgstr ""
 
-#: templates/base.html:119
+#: templates/base.html:118
 msgid "简体中文 "
 msgstr ""
 
-#: templates/base.html:120
+#: templates/base.html:119
 msgid "繁体中文 "
 msgstr ""
 
-#: templates/base.html:121
+#: templates/base.html:120
 msgid "英语 "
 msgstr ""
 
@@ -84,8 +84,19 @@ msgid "您好"
 msgstr ""
 
 #: templates/finish.html:11
-#, python-format
-msgid "本次测试共 %(num) 题  您共答对 %(correct) 题！耗时 %(time) s"
+msgid "本次测试共"
+msgstr ""
+
+#: templates/finish.html:11
+msgid "题"
+msgstr ""
+
+#: templates/finish.html:11
+msgid "您共答对"
+msgstr ""
+
+#: templates/finish.html:11
+msgid "题！耗时"
 msgstr ""
 
 #: templates/finish.html:12
