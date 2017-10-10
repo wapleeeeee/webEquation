@@ -14,19 +14,25 @@ def index():
 		return render_template("index.html",form = form)
 	else:	
 		if form.validate_on_submit():
+			session["name"] = form.username.data
 			return redirect(url_for('answer',user=form.username.data,num=form.numbers.data))
 		else:
 			return render_template("index.html", form = form)
 
-@app.route('/login', methods = ['GET', 'POST'])
-def login():
-    form = MyLoginForm()
-    if form.validate_on_submit():   
-        return redirect('/index')
-    return render_template('login.html',
-        title = 'Sign In',
-        form = form,
-        providers = app.config['OPENID_PROVIDERS'])
+@app.route('/hisScore', methods = ['GET', 'POST'])
+def hisScore():
+	if session.get("name",'') and models.User.query.filter_by(nickname = session.get("name",'')).all():
+		user_db = models.User.query.filter_by(nickname = session.get("name",'')).first()
+		return render_template('hisScore.html',
+			user = user_db.nickname,
+			count = user_db.numberOfQuestions,
+			correct = user_db.correct,
+			takeTime = user_db.time)
+	else:
+		flash("请输入用户名且至少完成一次答题")
+		return redirect(url_for('index'))
+
+
 
 @app.route('/answer/<user>/<num>', methods = ['GET', 'POST'])
 def answer(user,num):
@@ -42,7 +48,7 @@ def answer(user,num):
 		#如果存在记录
 		if models.User.query.filter_by(nickname = user).all():
 			old_db = models.User.query.filter_by(nickname = user).first()
-			old_db.numberOfQuestions = num + old_db.numberOfQuestions
+			old_db.numberOfQuestions = int(num) + old_db.numberOfQuestions
 			old_db.correct = counter + old_db.correct
 			old_db.time = time + old_db.time
 			db.session.add(old_db)
