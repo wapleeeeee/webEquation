@@ -3,13 +3,14 @@
   <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <body onload="timedCount()">
       
     <div class="container">
      <div class="well">
       	<div class="page-header">
-          <h2 style="display: inline;">开始答题： </h2>
-          <div align="right"><strong>用时:</strong> <span class="label label-default" name = "txt" id="txt"></span><strong> s</strong>
+          <h2 style="display: inline;">{{_('开始答题：')}} </h2>
+          <div align="right"><strong>{{_('用时:')}}</strong> <span class="label label-default" name = "txt" id="txt"></span><strong> s</strong>
         </div>
       </div>
         <form class="form-horizontal" action="" method="post" name="ans">
@@ -18,10 +19,10 @@
           {% for post in posts %}
            <br><h4>{{post.num}}. {{post.equ}}</h4>
            <div class="well">
-           <button type="button" class="btn btn-primary" title="正确答案"  
+           <button type="button" class="btn btn-primary" title="{{_('正确答案')}}"  
               data-container="body" data-toggle="popover" data-placement="right" 
              data-content="{{post.ans}}">
-               答案提示
+               {{_('答案提示')}}
              </button>
             </div>
             <script>
@@ -29,13 +30,13 @@
                   $("[data-toggle='popover']").popover();
                 });
               </script>
-            <input name="answer-{{post.num}}" type="text" class="form-control" placeholder="请输入答案 ">
+            <input name="answer-{{post.num}}" type="text" class="form-control" placeholder="{{_('请输入答案')}}">
            {% for error in form.answer.errors %}
             <span class="help-inline">[{{ error }}]</span>
             {% endfor %}
             {% endfor %}
             <br>
-		    <p class="text-center"><input class="btn btn-primary" type="submit" value="提交答案" ></p>
+		    <p class="text-center"><input class="btn btn-primary" type="submit" value="{{_('提交答案')}}" ></p>
     </form>
      </div>
     </div><!-- /.container -->

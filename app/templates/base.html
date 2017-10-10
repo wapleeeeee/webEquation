@@ -37,7 +37,6 @@
       <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
 
 
     <!--向txt中输入时间 -->
@@ -106,19 +105,19 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/index">四则运算器 </a>
+            <a class="navbar-brand" href="/index">{{ _("四则运算器") }}</a>
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href="/index">主 页 </a></li>
-              <li><a href="/hisScore">历史成绩</a></li>
-              <li><a href="https://github.com/wapleeeeee/webEquation">github地址 </a></li>
+              <li class="active"><a href="/index">{{ _("主 页 ") }}</a></li>
+              <li><a href="/hisScore">{{ _("历史成绩") }}</a></li>
+              <li><a href="https://github.com/wapleeeeee/webEquation">{{ _("github地址 ") }}</a></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">语言切换 <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ _("语言切换 ") }}<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">简体中文</a></li>
-                  <li><a href="#">繁体中文</a></li>
-                  <li><a href="#">英语</a></li>
+                  <li><a href="{{url_for('index',language='zh_Hans_CN')}}">{{ _("简体中文 ") }}</a></li>
+                  <li><a href="{{url_for('index',language='zh_Hant_TW')}}">{{ _("繁体中文 ") }}</a></li>
+                  <li><a href="{{url_for('index',language='en')}}">{{ _("英语 ") }}</a></li>
                 </ul>
               </li>
             </ul>

@@ -1,14 +1,19 @@
 from flask import render_template,flash,redirect,url_for,session
 from app import app
-from app import homework2,db,models
+from app import homework2,db,models,babel
 from .forms import LoginForm,MyLoginForm,AnswerForm
 import flask
 from time import time as ti
+from config import LANGUAGES
+from flask.ext.babel import gettext as _
+from flask_babel import refresh
 
 @app.route('/', methods = ['GET', 'POST'])
 @app.route('/index', methods = ['GET', 'POST'])
-@app.route('/index/<user>', methods = ['GET', 'POST'])
-def index():
+@app.route('/index/<language>', methods = ['GET', 'POST'])
+def index(language = "zh_Hans_CN"):
+	session["language"] = language
+	refresh()
 	form = MyLoginForm()
 	if flask.request.method == "GET":
 		return render_template("index.html",form = form)
@@ -29,7 +34,7 @@ def hisScore():
 			correct = user_db.correct,
 			takeTime = user_db.time)
 	else:
-		flash("请输入用户名且至少完成一次答题")
+		flash(_("请输入用户名且至少完成一次答题"))
 		return redirect(url_for('index'))
 
 
@@ -81,3 +86,7 @@ def finish(user,num,correct,time):
 		num = num,
 		correct = correct,
 		time = time)
+
+@babel.localeselector
+def get_locale():
+    return session.get("language","zh_Hans_CN") #request.accept_languages.best_match(LANGUAGES.keys())
