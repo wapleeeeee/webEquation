@@ -6,19 +6,10 @@
         <div class="start"><h4 class="title">{{user}},{{ _("您总计答题情况如下：") }}</h4></div>
         <div class="content"><h4 class="haveAns">{{ _("答题个数：") }}{{count}}</h4></div>
         <div class="content"><h4 class="haveAns">{{ _("正确个数：") }}{{correct}}</h4></div>
-        <div class="content"><h4 class="haveAns">{{ _("共用时：") }}{{takeTime}}</h4></div>
+        <div class="content"><h4 class="haveAns">{{ _("共用时：") }}{{takeTime}} s</h4></div>
         <p class="text-center"><a href="{{ url_for('index' )}}"> <input type="button" class="btn btn-primary" value="{{_('返回主页')}}" ></a></p>
       </div>
     </div>
     
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/docs.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 {% endblock %}

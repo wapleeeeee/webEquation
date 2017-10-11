@@ -1,0 +1,16 @@
+import os
+
+os.system("pip install flask")
+os.system("pip install flask")
+os.system("pip install flask-login")
+os.system("pip install flask-openid")
+os.system("pip install flask-mail")
+os.system("pip install flask-sqlalchemy")
+os.system("pip install sqlalchemy-migrate")
+os.system("pip install flask-whooshalchemy")
+os.system("pip install flask-wtf")
+os.system("pip install flask-babel")
+os.system("pip install guess_language")
+os.system("pip install flipflop")
+os.system("pip install coverage")
+os.system("pip install flask_babel")
